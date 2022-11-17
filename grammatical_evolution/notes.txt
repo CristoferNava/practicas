@@ -1,0 +1,23 @@
+1. Generamos la población inicial (generación cero). # Pony
+   # usar codificación binaria.
+2. Para cada uno de los individuos de la población inicial mapeamos su genótipo a su fenótipo haciendo uso
+   de una gramática BNF y DFS cómo algoritmo de recorrido.
+   # [1, 0, 1, 0] -> mapear vector binaro a forma entera.
+   # [12, 1, 3, 4, 8] -> "i4,+55.68/i0,-93.90#o2,-679.02_i2,+55.68/i1,-93.90#o1,-679.02"
+3. A partir del fenótipo construimos la tabla de las conexiones y los pesos.
+4. De la tabla extraemos los valores los cuales servirán como argumentos para alimentar al modelo.
+  # modelo = ml.red_nueronal()
+  # modelo.numero_neuronas_entrada = 5 # extraido de la tabla
+  # modelo.numero_neuronas_oculta = 4 # extraido de la tabla
+  # etc
+5. Con el modelo listo lo entrenamos con algún dataset y lo evaluamos.
+  # modelo.predict(iris.data, iris.target)
+  # accuracy = modelo.accuracy()
+6. Cada uno de los individuos marcamos su accuracy. Usaremos este parámetro como fitness function.
+  # individuo.fitness = accuracy
+7. Hacemos el proceso de selección. Torneo binario.
+8. Realizamos el crossover. Por punto.
+9. Mutación. Cambiar bit
+10. Repetimos desde el paso 2 con la nueva generación hasta obtener el accuracy buscado.
+11. Finalizamos y obtenemos el individuo como el mejor accuracy, este nos dará la mejor arquitectura encontrada.
+feno -> "i4,+55.68/i0,-93.90#o2,-679.02_i2,+55.68/i1,-93.90#o1,-679.02"
